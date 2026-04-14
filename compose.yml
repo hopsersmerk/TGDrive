@@ -4,18 +4,22 @@ services:
       context: .
       dockerfile: Dockerfile
     restart: unless-stopped
-    ports:
-      - "8005:8000"
     environment:
-      API_ID: "${API_ID}"
-      API_HASH: "${API_HASH}"
-      BOT_TOKENS: "${BOT_TOKENS}"
-      STORAGE_CHANNEL: "${STORAGE_CHANNEL}"
-      DATABASE_BACKUP_MSG_ID: "${DATABASE_BACKUP_MSG_ID}"
-      ADMIN_PASSWORD: "${ADMIN_PASSWORD:-admin}"
-      DATABASE_BACKUP_TIME: "${DATABASE_BACKUP_TIME:-60}"
-      SLEEP_THRESHOLD: "${SLEEP_THRESHOLD:-60}"
-      WEBSITE_URL: "${WEBSITE_URL:-}"
-      STRING_SESSIONS: "${STRING_SESSIONS:-}"
-      MAIN_BOT_TOKEN: "${MAIN_BOT_TOKEN:-}"
-      TELEGRAM_ADMIN_IDS: "${TELEGRAM_ADMIN_IDS:-}"
+      API_ID: ${API_ID}
+      API_HASH: ${API_HASH}
+      BOT_TOKENS: ${BOT_TOKENS}
+      STORAGE_CHANNEL: ${STORAGE_CHANNEL}
+      DATABASE_BACKUP_MSG_ID: ${DATABASE_BACKUP_MSG_ID}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-admin}
+      DATABASE_BACKUP_TIME: ${DATABASE_BACKUP_TIME:-60}
+      SLEEP_THRESHOLD: ${SLEEP_THRESHOLD:-60}
+      WEBSITE_URL: ${WEBSITE_URL:-}
+      STRING_SESSIONS: ${STRING_SESSIONS:-}
+      MAIN_BOT_TOKEN: ${MAIN_BOT_TOKEN:-}
+      TELEGRAM_ADMIN_IDS: ${TELEGRAM_ADMIN_IDS:-}
+    networks:
+      - dokploy-network
+
+networks:
+  dokploy-network:
+    external: true
